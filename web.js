@@ -109,3 +109,18 @@ var addOrder = function(order_obj, callback) {
     });
   }
 };
+
+// spx - render Catalog items
+app.get('/items', function(request, response) {
+  global.db.Item.findAll().success(function(items) {
+    var items_json = [];
+    items.forEach(function(item) {
+      items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost});
+    });
+    // Uses views/items.ejs
+    response.render("items", {items: items_json});
+  }).error(function(err) {
+    console.log(err);
+    response.send("error retrieving catalog items");
+  });
+});
