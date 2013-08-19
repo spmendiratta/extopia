@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style type="text/css">
+      .orangey {
+          color: #FF9933; 
+      }
+  </style>
   <head>
     <meta charset="utf-8">
     <title>Orders</title>
@@ -9,9 +14,11 @@
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
   </head>
+
+  <% include ../header.html %>
   <body>
     <div class="container">
-      <h2>Coinbase orders</h2>
+      <h2> <font class="orangey">Coinbase Orders</font></h2>
       <table class="table table-striped">
         <thead>
           <th>Coinbase ID</th>
@@ -19,7 +26,7 @@
           <th>Transaction time</th>
         </thead>
         <tbody>
-          <% for(var i=0; i<orders.length; i++) {%>
+          <% for(var i=0; i < orders.length; i++) {%>
              <tr>
                <td><%= orders[i].id %></td>
                <td><%= orders[i].amount %></td>
@@ -27,7 +34,7 @@
              </tr>
              <% } %>
       </table>
-      <a href="/refresh_orders">Refresh orders from coinbase</a>
-    </div>
+      <a href="/refresh_orders">Refresh orders from Coinbase</a>
+    </div> 
   </body>
 </html>

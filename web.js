@@ -14,8 +14,19 @@ app.set('port', process.env.PORT || 8080);
 
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
-  var data = fs.readFileSync('index.html').toString();
-  response.send(data);
+  // var data = fs.readFileSync('index.html').toString();
+  // response.send(data);
+  var header = fs.readFileSync('header.html').toString();
+  var body = fs.readFileSync('home.html').toString();
+  var footer = fs.readFileSync('footer.html').toString();
+  response.send( header + body + footer );
+});
+
+// contact
+app.get('/contact', function(request, response) {
+  var header = fs.readFileSync('header.html').toString();
+  var body = fs.readFileSync('contact.html').toString();
+  response.send( header + body );
 });
 
 // Render example.com/orders
@@ -117,6 +128,7 @@ app.get('/items', function(request, response) {
     items.forEach(function(item) {
       items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost});
     });
+    // var header = fs.readFileSync('header.html').toString();
     // Uses views/items.ejs
     response.render("items", {items: items_json});
   }).error(function(err) {
