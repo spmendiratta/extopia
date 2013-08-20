@@ -29,6 +29,18 @@ app.get('/contact', function(request, response) {
   response.send( header + body );
 });
 
+// signup
+app.get('/signup', function(request, response) {
+  var header = fs.readFileSync('header.html').toString();
+  response.send( header + "<html> 'Sign Up' Not implemented yet ! </html>" );
+});
+
+// signin
+app.get('/signin', function(request, response) {
+  var header = fs.readFileSync('header.html').toString();
+  response.send( header + "<html> Not implemented yet ! </html>" );
+});
+
 // Render example.com/orders
 app.get('/orders', function(request, response) {
   global.db.Order.findAll().success(function(orders) {

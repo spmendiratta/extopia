@@ -12,6 +12,7 @@
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
           rel="stylesheet" type="text/css">
+
     <!-- How do you link local stylesheets -->
     <!-- link rel="stylesheet" href="local.css"-->    
     <style type="text/css">
@@ -123,7 +124,6 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
     </script>
   </head>
 
@@ -140,6 +140,40 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="/">ex<font class="orangey">topi</font>a</a>
+          <ul class="nav pull-right">
+           <li class="dropdown">
+             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In<strong class="caret"></strong></a>
+             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+               <!-- Login form here -->
+               <form action="/signin" method="post" accept-charset="UTF-8">
+                 <input id="email" style="margin-bottom: 10px;" type="text" name="user[email]" size="60" placeholder="email">
+                 <input id="passwd" style="margin-bottom: 10px;" type="password" name="user[passwd]" size="60" placeholder="Password">
+                 <input class="btn btn-success" style="width: 100%; text-align: center; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+               </form>
+            </div>
+           </li>
+           <li class="divider-vertical"></li>
+               <!-- a href="/signup"><span class="btn btn-success pull-right"><i class="icon-edit icon-white"></i>Sign Up</span></a -->
+               <a href="#sign-up" data-toggle="modal" data-backdrop="false"><span class="btn btn-success pull-right"><i class="icon-edit icon-white"></i>Sign Up</span></a>
+          </ul>
+          <div class = "modal hide fade" id="sign-up">
+            <div class="modal-header">
+              <a class="close" data-dismiss="modal">&times;</a>
+              <h3>ex<font class="orangey">topi</font>a</h3>
+            </div>
+            <div class="modal-body">
+              <div class = "span6">
+                 <label> <strong>Name </strong></label><input id="name" style="margin-bottom: 10px;" type="text" name="user[name]"  size="60" class="span4">
+                 <label><strong> email </strong></label><input id="email" style="margin-bottom: 10px;" type="text" name="user[email]" size="60" class="span4">
+                 <label><strong> Password </strong></label><input id="passwd" style="margin-bottom: 10px;" type="password" name="user[passwd]" size="60" class="span4">
+                 <label><strong> Please Re-enter </strong></label><input id="passwd" style="margin-bottom: 10px;" type="password" name="user[passwd]" size="60" class="span4"> 
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="" class="btn" data-dismiss="modal">Cancel</a>
+              <a href="/signup" class="btn btn-success">Sign Up</a>
+            </div>
+          </div>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class=""><a href="/">Home</a></li>
