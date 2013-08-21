@@ -149,7 +149,7 @@ var addUser = function(user, callback) {
     User.find({where: {email: user.email}}).success(function(user_instance) {
       if (user_instance) {
         // user already exists, do nothing
-        callback("__" + user.email + " already exists ! ");
+        callback("'" + user.email + "' is already on the Mailing List ! ");
       } else {
           // build instance and save
           var new_user_instance = User.build({
@@ -158,9 +158,9 @@ var addUser = function(user, callback) {
                       interest: user.interest
           });
           new_user_instance.save().success(function() {
-          callback("__'" + user.email + "' added to Mailing List ! ");
+          callback("Thanks for signing up !");
         }).error(function(err) {
-          callback("__Unexpected error " + err);
+          callback("%%Unexpected error " + err);
         });
       }
     });
