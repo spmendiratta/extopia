@@ -37,8 +37,10 @@ app.post('/signup', function(request, response) {
   var interest = request.param('interest');
 
   var header = fs.readFileSync('header.html').toString();
-  var status = addUser(email, name, interest);
-  response.send( header + "<html><strong>" +  status + "</strong></html>" );
+  var user_json = {email: email, name: name, interest: interest};
+  var status = addUser(user_json, function(message) {
+      response.send( header + "<html><h3>" +  message + "</h3></html>" );
+  });
 });
 
 // signin
@@ -141,27 +143,24 @@ var addOrder = function(order_obj, callback) {
 
 
 // add a user
-var addUser = function(u_email, u_name, u_interest) {
+var addUser = function(user, callback) {
     var User = global.db.User;
     // find if user has already been added to our database
-    User.find({where: {email: u_email}}).success(function(user_instance) {
+    User.find({where: {email: user.email}}).success(function(user_instance) {
       if (user_instance) {
         // user already exists, do nothing
-        console.log(u_email + " already exists ! ");
-        return(u_email + " already exists ! ");
+        callback("__" + user.email + " already exists ! ");
       } else {
           // build instance and save
           var new_user_instance = User.build({
-                      email: u_email,
-                      name: u_name,
-                      interest: u_interest
+                      email: user.email,
+                      name: user.name,
+                      interest: user.interest
           });
           new_user_instance.save().success(function() {
-          console.log(u_email + " added to Mailing List ! ");
-          return(u_email + " added to Mailing List ! ");
+          callback("__'" + user.email + "' added to Mailing List ! ");
         }).error(function(err) {
-          console.log("%%Unexpected error " + err);
-          return("%%Unexpected error " + err);
+          callback("__Unexpected error " + err);
         });
       }
     });
