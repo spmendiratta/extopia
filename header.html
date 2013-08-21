@@ -124,6 +124,15 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+
+      function validateSignUpForm(form) {
+         // signUpForm
+         var email = document.forms["signUpForm"]["email"].value;
+         var name = document.forms["signUpForm"]["name"].value;
+         if (email == "" || name == "") return false;
+         return true;
+      }
+
     </script>
   </head>
 
@@ -162,19 +171,32 @@
               <a class="close" data-dismiss="modal">&times;</a>
               <h3>ex<font class="orangey">topi</font>a</h3>
             </div>
-            <div class="modal-body">
+            <form name = "signUpForm" method="post" action="/signup" onSubmit = "return validateSignUpForm()" accept-charset="UTF-8">
+             <div class="modal-body">
               <div class = "span6">
-                 <label> <strong>Please Sign Up for the Newsletter</strong></label>
-                 <input id="name" placeholder="Name" style="margin-bottom: 10px;" type="text" name="user[name]"  size="60" class="span4">
-                 <input id="email" placeholder="email" style="margin-bottom: 10px;" type="text" name="user[email]" size="60" class="span4">
+                 <label><strong>Please Sign Up for our Newsletter</strong></label>
+                 <input placeholder="email" style="margin-bottom: 10px;" type="text" name="email" size="60" class="span4">
+                 <input placeholder="Name" style="margin-bottom: 10px;" type="text" name="name" size="60" class="span4">
+                 <label><strong>Main Interest</strong></label>
+                 
+                 <select name="interest">
+                   <option> India </option>
+                   <option> Turkey </option>
+                   <option> Peru </option>
+                   <option> Morocco </option>
+                 </select>
+                 </strong>
+                 <!-- input placeholder="Interests" style="margin-bottom: 10px;" type="text" name="interests" size="60" class="span4" -->
                  <!-- input id="passwd" placeholder="Password" style="margin-bottom: 10px;" type="password" name="user[passwd]" size="60" class="span4">
                  <input id="passwd" placeholder="Please re-enter Password" style="margin-bottom: 10px;" type="password" name="user[passwd]" size="60" class="span4" --> 
               </div>
-            </div>
-            <div class="modal-footer">
+             </div>
+             <div class="modal-footer">
               <a href="" class="btn" data-dismiss="modal">Cancel</a>
-              <a href="/signup" class="btn btn-success">Sign Up</a>
-            </div>
+              <!-- a href="/signup" class="btn btn-success">Sign Up</a -->
+              <input class="btn btn-success" type="submit" value="Sign Up" />
+             </div>
+            </form>
           </div>
 
           <div class="nav-collapse collapse">
@@ -182,6 +204,7 @@
               <li class=""><a href="/">Home</a></li>
               <li class=""><a href="/items">Catalog</a></li>
               <li class=""><a href="/orders">Orders</a></li>
+              <li class=""><a href="/users">Mailing List</a></li>
               <li class=""><a href="/contact">Contact Us</a></li>
             </ul>
           </div><!--/.nav-collapse -->

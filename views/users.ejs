@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style type="text/css">
+      .orangey {
+          color: #FF9933; 
+      }
+  </style>
+  <head>
+    <meta charset="utf-8">
+    <title>Mailing List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+  </head>
+
+  <% include ../header.html %>
+  <body>
+    <div class="container">
+      <h2> <font class="orangey">Mailing List</font></h2>
+      <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>email</th>
+          <th>Interest</th>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < users.length; i++) {%>
+             <tr>
+               <td><%= users[i].name %></td>
+               <td><%= users[i].email %></td>
+               <td><%= users[i].interest %></td>
+             </tr>
+             <% } %>
+      </table>
+    </div>
+  </body>
+</html>

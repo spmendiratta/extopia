@@ -8,6 +8,7 @@ var async   = require('async')
   , db      = require('./models');
 
 var app = express();
+app.use(express.bodyParser());          // Request Body Parsing middleware
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
@@ -29,10 +30,15 @@ app.get('/contact', function(request, response) {
   response.send( header + body );
 });
 
-// signup
-app.get('/signup', function(request, response) {
+// signup : form post
+app.post('/signup', function(request, response) {
+  var email = request.param('email');
+  var name = request.param('name');
+  var interest = request.param('interest');
+
   var header = fs.readFileSync('header.html').toString();
-  response.send( header + "<html> 'Sign Up' Not implemented yet ! </html>" );
+  var status = addUser(email, name, interest);
+  response.send( header + "<html><strong>" +  status + "</strong></html>" );
 });
 
 // signin
@@ -133,18 +139,58 @@ var addOrder = function(order_obj, callback) {
   }
 };
 
-// spx - render Catalog items
+
+// add a user
+var addUser = function(u_email, u_name, u_interest) {
+    var User = global.db.User;
+    // find if user has already been added to our database
+    User.find({where: {email: u_email}}).success(function(user_instance) {
+      if (user_instance) {
+        // user already exists, do nothing
+        console.log(u_email + " already exists ! ");
+        return(u_email + " already exists ! ");
+      } else {
+          // build instance and save
+          var new_user_instance = User.build({
+                      email: u_email,
+                      name: u_name,
+                      interest: u_interest
+          });
+          new_user_instance.save().success(function() {
+          console.log(u_email + " added to Mailing List ! ");
+          return(u_email + " added to Mailing List ! ");
+        }).error(function(err) {
+          console.log("%%Unexpected error " + err);
+          return("%%Unexpected error " + err);
+        });
+      }
+    });
+};
+
+// Render Catalog items
 app.get('/items', function(request, response) {
   global.db.Item.findAll().success(function(items) {
     var items_json = [];
     items.forEach(function(item) {
       items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost});
     });
-    // var header = fs.readFileSync('header.html').toString();
-    // Uses views/items.ejs
     response.render("items", {items: items_json});
   }).error(function(err) {
     console.log(err);
     response.send("error retrieving catalog items");
+  });
+});
+
+ // Show Mailing List
+app.get('/users', function(request, response) {
+  global.db.User.findAll().success(function(users) {
+    var users_json = [];
+    users.forEach(function(user) {
+      users_json.push({email: user.email, name: user.name, interest: user.interest});
+    });
+    response.render("users", {users: users_json});
+  }).error(function(err) {
+    console.log(err);
+    response.send("error retrieving Mailing List");
   });
 });
