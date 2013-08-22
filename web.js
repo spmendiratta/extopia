@@ -43,6 +43,14 @@ app.post('/signup', function(request, response) {
   });
 });
 
+// contact
+app.get('/gallery', function(request, response) {
+  var header = fs.readFileSync('header.html').toString();
+  var body = fs.readFileSync('gallery.html').toString();
+
+  response.send( header + body );
+});
+
 // signin
 app.get('/signin', function(request, response) {
   var header = fs.readFileSync('header.html').toString();
