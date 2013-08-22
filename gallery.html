@@ -32,18 +32,26 @@
  
     <!-- Call jQuery 1.9, call bootstrap.js and run the carousel when the DOM is ready. 
          Slide every 10 seconds. -->
-    <!-- sp : disable auto-play
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
     </script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        /*
         $(document).ready(function() {
 	        $('#crusl').carousel({
 	             interval: 10000
 	        })
         });
+        */
+        /* Disable autoplay */
+        $(function() {
+            $('.carousel').each(function(){
+                $(this).carousel({
+                    interval: false
+                });
+            });
+        });
     </script>
-    -->
   </head>
   <body> 
    <div class="row-fluid section2">
@@ -72,33 +80,36 @@
           <div class="carousel-inner">
                <div class="item active">
                  <div class="row-fluid">
-                    <div class="span4"><a href="https://lh4.googleusercontent.com/-Srb3Upm0tFg/UhZPKvWLdiI/AAAAAAAAAes/8-lamp8Weag/s720/IMG_0893.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/-Srb3Upm0tFg/UhZPKvWLdiI/AAAAAAAAAes/8-lamp8Weag/s720/IMG_0893.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh4.googleusercontent.com/--waITTe22lw/UhZPKaIAt2I/AAAAAAAAAek/pEt0uESmhok/s720/IMG_3479.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/--waITTe22lw/UhZPKaIAt2I/AAAAAAAAAek/pEt0uESmhok/s720/IMG_3479.JPG" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh3.googleusercontent.com/-1K6TzhF6vUU/UhZPLPxU9DI/AAAAAAAAAe0/fIPjYkNWrDI/s720/IMG_0553.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-1K6TzhF6vUU/UhZPLPxU9DI/AAAAAAAAAe0/fIPjYkNWrDI/s720/IMG_0553.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh3.googleusercontent.com/-Ij6eEb6mlyk/UhaKsyuJ-XI/AAAAAAAAAgM/fpDvXjEDzUM/s720/IMG_0893.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-Ij6eEb6mlyk/UhaKsyuJ-XI/AAAAAAAAAgM/fpDvXjEDzUM/s720/IMG_0893.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh3.googleusercontent.com/-CbKl7897zNY/UhaKsRTTBTI/AAAAAAAAAgE/LuMXzgKHYgs/s720/IMG_3479.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-CbKl7897zNY/UhaKsRTTBTI/AAAAAAAAAgE/LuMXzgKHYgs/s720/IMG_3479.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh3.googleusercontent.com/-St0Uy0i69nw/UhaKtdVfndI/AAAAAAAAAgU/MjVtwfYEuZE/s720/IMG_0553.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-St0Uy0i69nw/UhaKtdVfndI/AAAAAAAAAgU/MjVtwfYEuZE/s720/IMG_0553.JPG" alt="Image" style="max-width:100%;" /></a></div>
                     </div><!--/row-fluid-->
                </div><!--/item-->
+
                <div class="item">
                  <div class="row-fluid">
-                    <div class="span4"><a href="https://lh5.googleusercontent.com/-eWYhV4f0udo/UhZPIk8UNbI/AAAAAAAAAeI/8CRGCtdBGcs/s720/IMG_4430.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-eWYhV4f0udo/UhZPIk8UNbI/AAAAAAAAAeI/8CRGCtdBGcs/s720/IMG_4430.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh4.googleusercontent.com/-XNF1PaM3nuA/UhZPJ92mDGI/AAAAAAAAAec/vnckhkKs0iI/s720/IMG_0415.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/-XNF1PaM3nuA/UhZPJ92mDGI/AAAAAAAAAec/vnckhkKs0iI/s720/IMG_0415.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh6.googleusercontent.com/-scWSWhsidT4/UhZPJcd6SHI/AAAAAAAAAeU/eG1FFmP1IZM/s720/IMG_1252.JPG" class="thumbnail"><img src="https://lh6.googleusercontent.com/-scWSWhsidT4/UhZPJcd6SHI/AAAAAAAAAeU/eG1FFmP1IZM/s720/IMG_1252.JPG" al0t="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh5.googleusercontent.com/-2lvfmp4V3IQ/UhaKvsL0E_I/AAAAAAAAAg8/B6KYQHYL9wM/s720/IMG_1258.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-2lvfmp4V3IQ/UhaKvsL0E_I/AAAAAAAAAg8/B6KYQHYL9wM/s720/IMG_1258.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh5.googleusercontent.com/-Ccc5deoNAOU/UhaKr2GbmoI/AAAAAAAAAf8/PdOmM-tOtn0/s720/IMG_0415.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-Ccc5deoNAOU/UhaKr2GbmoI/AAAAAAAAAf8/PdOmM-tOtn0/s720/IMG_0415.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh6.googleusercontent.com/-H8gpjzrF994/UhaKqo2N3iI/AAAAAAAAAfs/RMiOpJLIDYA/s720/IMG_4430.JPG" class="thumbnail"><img src="https://lh6.googleusercontent.com/-H8gpjzrF994/UhaKqo2N3iI/AAAAAAAAAfs/RMiOpJLIDYA/s720/IMG_4430.JPG" alt="Image" style="max-width:100%;" /></a></div>
                     </div><!--/row-fluid-->
                </div><!--/item-->
+
                <div class="item">
                  <div class="row-fluid">
-                    <div class="span4"><a href="https://lh3.googleusercontent.com/-k6k4phrUZHs/UhZOpsbSq3I/AAAAAAAAAd8/trHiQpbNfdM/s720/IMG_4711.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-k6k4phrUZHs/UhZOpsbSq3I/AAAAAAAAAd8/trHiQpbNfdM/s720/IMG_4711.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh6.googleusercontent.com/-OZPgDOK5LjI/UhZPL9HgUDI/AAAAAAAAAfE/YARQjqwZBU8/s720/IMG_1394.JPG" class="thumbnail"><img src="https://lh6.googleusercontent.com/-OZPgDOK5LjI/UhZPL9HgUDI/AAAAAAAAAfE/YARQjqwZBU8/s720/IMG_1394.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh5.googleusercontent.com/-G-0ZiWlHCA0/UhZPJD9WwWI/AAAAAAAAAeQ/Ookge1As2oo/s720/IMG_0412.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-G-0ZiWlHCA0/UhZPJD9WwWI/AAAAAAAAAeQ/Ookge1As2oo/s720/IMG_0412.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh4.googleusercontent.com/--tSNKZBFnKE/UhaKt9q2JFI/AAAAAAAAAgc/YSA88fCnRmo/s720/IMG_4711.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/--tSNKZBFnKE/UhaKt9q2JFI/AAAAAAAAAgc/YSA88fCnRmo/s720/IMG_4711.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh4.googleusercontent.com/-o6q5skxMjPg/UhaKucXEdII/AAAAAAAAAgk/UQv6BxXQ7Nk/s720/IMG_1394.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/-o6q5skxMjPg/UhaKucXEdII/AAAAAAAAAgk/UQv6BxXQ7Nk/s720/IMG_1394.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh4.googleusercontent.com/-8wguKW66KnY/UhaKrW8syNI/AAAAAAAAAf0/wY6K_hhro1Q/s720/IMG_0412.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/-8wguKW66KnY/UhaKrW8syNI/AAAAAAAAAf0/wY6K_hhro1Q/s720/IMG_0412.JPG" alt="Image" style="max-width:100%;" /></a></div>
                     </div><!--/row-fluid-->
                </div><!--/item-->
+
                <div class="item">
                  <div class="row-fluid">
-                    <div class="span4"><a href="https://lh5.googleusercontent.com/-eWYhV4f0udo/UhZPIk8UNbI/AAAAAAAAAeI/8CRGCtdBGcs/s720/IMG_4430.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-eWYhV4f0udo/UhZPIk8UNbI/AAAAAAAAAeI/8CRGCtdBGcs/s720/IMG_4430.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh5.googleusercontent.com/-es7DKi0aCdA/UhZPMuosI3I/AAAAAAAAAfU/4WGqCYe3RBM/s720/IMG_1219.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-es7DKi0aCdA/UhZPMuosI3I/AAAAAAAAAfU/4WGqCYe3RBM/s720/IMG_1219.JPG" alt="Image" style="max-width:100%;" /></a></div>
-                    <div class="span4"><a href="https://lh3.googleusercontent.com/-sYucNtahMY4/UhZPMLUkBTI/AAAAAAAAAfM/O4tm-1P-etM/s720/IMG_0310.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-sYucNtahMY4/UhZPMLUkBTI/AAAAAAAAAfM/O4tm-1P-etM/s720/IMG_0310.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh4.googleusercontent.com/-kMb0xC4OA-Q/UhaKvK2F7EI/AAAAAAAAAg0/uaKENCYucME/s720/IMG_1219.JPG" class="thumbnail"><img src="https://lh4.googleusercontent.com/-kMb0xC4OA-Q/UhaKvK2F7EI/AAAAAAAAAg0/uaKENCYucME/s720/IMG_1219.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh3.googleusercontent.com/-JWv5_-Cv8R0/UhaKqHbkc-I/AAAAAAAAAfk/2KcENPyJcR8/s720/IMG_0567.JPG" class="thumbnail"><img src="https://lh3.googleusercontent.com/-JWv5_-Cv8R0/UhaKqHbkc-I/AAAAAAAAAfk/2KcENPyJcR8/s720/IMG_0567.JPG" alt="Image" style="max-width:100%;" /></a></div>
+                    <div class="span4"><a href="https://lh5.googleusercontent.com/-lIX-95_UlQU/UhaKuleIexI/AAAAAAAAAgs/3XuIUBJLmSg/s720/IMG_0310.JPG" class="thumbnail"><img src="https://lh5.googleusercontent.com/-lIX-95_UlQU/UhaKuleIexI/AAAAAAAAAgs/3XuIUBJLmSg/s720/IMG_0310.JPG" alt="Image" style="max-width:100%;" /></a></div>
                     </div><!--/row-fluid-->
                </div><!--/item-->
-    
+
           </div><!--/carousel-inner-->
           <a class="left carousel-control" href="#crusl" data-slide="prev">‹</a>
           <a class="right carousel-control" href="#crusl" data-slide="next">›</a>
