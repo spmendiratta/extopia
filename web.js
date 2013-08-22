@@ -38,8 +38,8 @@ app.post('/signup', function(request, response) {
 
   var header = fs.readFileSync('header.html').toString();
   var user_json = {email: email, name: name, interest: interest};
-  var status = addUser(user_json, function(message) {
-      response.send( header + "<html><h3>" +  message + "</h3></html>" );
+  var status = addUser(user_json, function(code, message) {
+            response.send( header + buildAlert(code, message) );
   });
 });
 
@@ -149,7 +149,7 @@ var addUser = function(user, callback) {
     User.find({where: {email: user.email}}).success(function(user_instance) {
       if (user_instance) {
         // user already exists, do nothing
-        callback("'" + user.email + "' is already on the Mailing List ! ");
+        callback(1, "'" + user.email + "' is already on the Mailing List ! ");
       } else {
           // build instance and save
           var new_user_instance = User.build({
@@ -158,9 +158,9 @@ var addUser = function(user, callback) {
                       interest: user.interest
           });
           new_user_instance.save().success(function() {
-          callback("Thanks for signing up !");
+          callback(0, "Thanks for signing up !");
         }).error(function(err) {
-          callback("%%Unexpected error " + err);
+          callback(9, "%%Unexpected error " + err);
         });
       }
     });
@@ -193,3 +193,29 @@ app.get('/users', function(request, response) {
     response.send("error retrieving Mailing List");
   });
 });
+
+
+function buildAlert( code, message ) {
+      var alert = "alert-error";
+      if (code == 0) {
+          alert = "alert-success";
+      } else if (code == 1) {
+          alert = "alert-info";
+      }
+      var html = 	
+	'<html lang="en"> \n' +    
+	'   <style type="text/css"> \n' +   
+	'    body { \n' +   
+	'        padding: 50px; \n' +   
+	'    }  \n' +  
+	'   </style> \n' +   
+	'   <body>  \n' +  
+	'    <div class="alert ' + alert + '"> \n' +   
+	'      <a class="close" data-dismiss="alert">×<a/>\n ' +  
+	'        <strong>' + message + ' </strong>\n' +
+	'    </div>  \n' +  
+	'   </body>  \n' +  
+	'</html>  \n';  
+
+      return html;
+}
