@@ -27,7 +27,9 @@ app.get('/', function(request, response) {
 app.get('/contact', function(request, response) {
   var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('contact.html').toString();
-  response.send( header + body );
+  var footer = fs.readFileSync('footer.html').toString();
+
+  response.send( header + body + footer);
 });
 
 // signup : form post
@@ -43,12 +45,13 @@ app.post('/signup', function(request, response) {
   });
 });
 
-// contact
+// gallery
 app.get('/gallery', function(request, response) {
   var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('gallery.html').toString();
+  var footer = fs.readFileSync('footer.html').toString();
 
-  response.send( header + body );
+  response.send( header + body + footer);
 });
 
 // signin
