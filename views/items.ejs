@@ -25,6 +25,7 @@
           <th>Country of Origin</th>
           <th>Description</th>
           <th>Cost</th>
+          <th>Image</th>
         </thead>
         <tbody>
           <% for(var i=0; i < items.length; i++) {%>
@@ -33,6 +34,7 @@
                <td><%= items[i].country_of_origin %></td>
                <td><%= items[i].description %></td>
                <td><%= items[i].cost %></td>
+               <td><%= items[i].image_url %></td>
              </tr>
              <% } %>
       </table>

@@ -45,6 +45,15 @@ app.post('/signup', function(request, response) {
   });
 });
 
+// specials
+app.get('/specials', function(request, response) {
+  var header = fs.readFileSync('header.html').toString();
+  var body = fs.readFileSync('specials.html').toString();
+  var footer = fs.readFileSync('footer.html').toString();
+
+  response.send( header + body + footer);
+});
+
 // gallery
 app.get('/gallery', function(request, response) {
   var header = fs.readFileSync('header.html').toString();
@@ -62,7 +71,7 @@ app.get('/signin', function(request, response) {
 
 // Render example.com/orders
 app.get('/orders', function(request, response) {
-  global.db.Order.findAll().success(function(orders) {
+  global.db.Order.findAll({order:'time'}).success(function(orders) {
     var orders_json = [];
     orders.forEach(function(order) {
       orders_json.push({id: order.coinbase_id, amount: order.amount, time: order.time});
@@ -179,10 +188,10 @@ var addUser = function(user, callback) {
 
 // Render Catalog items
 app.get('/items', function(request, response) {
-  global.db.Item.findAll().success(function(items) {
+  global.db.Item.findAll({order:'item_id'}).success(function(items) {
     var items_json = [];
     items.forEach(function(item) {
-      items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost});
+      items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost, image_url: item.image_url});
     });
     response.render("items", {items: items_json});
   }).error(function(err) {
