@@ -9,6 +9,7 @@ var async   = require('async')
 
 var app = express();
 app.use(express.bodyParser());          // Request Body Parsing middleware
+                                        // Reqd to parse form data
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
@@ -173,10 +174,10 @@ var addUser = function(user, callback) {
       } else {
           // build instance and save
           var new_user_instance = User.build({
-                      email: user.email,
-                      name: user.name,
-                      interest: user.interest
-          });
+                                          email: user.email,
+                                          name: user.name,
+                                          interest: user.interest
+                                  });
           new_user_instance.save().success(function() {
           callback(0, "Thanks for signing up !");
         }).error(function(err) {
@@ -188,7 +189,19 @@ var addUser = function(user, callback) {
 
 // Render Catalog items
 app.get('/items', function(request, response) {
-  global.db.Item.findAll({order:'item_id'}).success(function(items) {
+  getItems('item_id', request, response);
+});
+
+app.get('/itemsByCountry', function(request, response) {
+  getItems('country_of_origin', request, response);
+});
+
+app.get('/itemsByCost', function(request, response) {
+  getItems('cost', request, response);
+});
+
+function getItems(sortBy, request, response) {
+  global.db.Item.findAll({order: sortBy}).success(function(items) {
     var items_json = [];
     items.forEach(function(item) {
       items_json.push({item_id: item.item_id, country_of_origin: item.country_of_origin, description: item.description, cost: item.cost, image_url: item.image_url});
@@ -198,9 +211,22 @@ app.get('/items', function(request, response) {
     console.log(err);
     response.send("error retrieving catalog items");
   });
+}
+
+// how do you pass json object ?
+app.get('/itemDetails', function(request, response) {
+    var item_id = request.query['item_id'].replace(/'/g,"");
+    var country_of_origin = request.query['country_of_origin'].replace(/'/g,'');
+    var description = request.query['description'].replace(/'/g,'');
+    var cost = request.query['cost'].replace(/'/g,'');
+    var image_url = request.query['image_url'].replace(/'/g,'');
+    var details_json = [];
+
+    details_json.push({item_id: item_id, country_of_origin: country_of_origin, description: description, cost: cost, image_url: image_url});
+    response.render("item_details", {item_details: details_json});
 });
 
- // Show Mailing List
+// Show Mailing List
 app.get('/users', function(request, response) {
   global.db.User.findAll().success(function(users) {
     var users_json = [];

@@ -19,22 +19,31 @@
   <body>
     <div class="container">
       <h2> <font class="orangey">Catalog</font></h2>
+      <div>
+         <strong> Sort By</strong>
+      </div>
+      <div class="btn-group" data-toggle-name="is_private" data-toggle="buttons-radio" >
+        <a href="/items"><button type="button" class="btn" data-toggle="button">ID</button> </a>
+        <a href="/itemsByCountry"><button type="button" class="btn" data-toggle="button">Country</button> </a>
+        <a href="/itemsByCost"><button type="button" class="btn" data-toggle="button">Cost</button> </a>
+      </div>
       <table class="table table-striped">
         <thead>
           <th>Item ID</th>
           <th>Country of Origin</th>
           <th>Description</th>
           <th>Cost</th>
-          <th>Image</th>
+          <!-- th>Image</th -->
         </thead>
         <tbody>
           <% for(var i=0; i < items.length; i++) {%>
              <tr>
-               <td><%= items[i].item_id %></td>
+               <!-- how do you pass json object itself ? -->
+               <td><a href="/itemDetails/?query_string&item_id='<%= items[i].item_id %>'&country_of_origin='<%= items[i].country_of_origin %>'&description='<%= items[i].description %>'&cost='<%= items[i].cost %>'&image_url=' <%= [items[i].image_url] %>'"><%= items[i].item_id %></a></td>
                <td><%= items[i].country_of_origin %></td>
                <td><%= items[i].description %></td>
                <td><%= items[i].cost %></td>
-               <td><%= items[i].image_url %></td>
+               <!-- td><%= items[i].image_url %></td -->
              </tr>
              <% } %>
       </table>

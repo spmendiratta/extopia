@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style type="text/css">
+      .orangey {
+          color: #FF9933; 
+      }
+  </style>
+  <script>
+    function goBack() {
+      window.history.back()
+      }
+  </script>
+  <head>
+    <meta charset="utf-8">
+    <title>Catalog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+  </head>
+
+  <% include ../header.html %>
+  <body >
+    <div class="container">
+      <h2> <font class="orangey"><%= item_details[0].item_id %></font></h2>
+      <div class="thumbnail span4">
+          <img src="http://placehold.it/320x320" alt="ALT NAME">
+      </div>
+      <div class="span4">
+        <div class="well">
+		<h2 class="text-warning"><%= item_details[0].description %></h2>
+		<p><span class="label label-success"><%= item_details[0].item_id %></span></p>
+                <p>
+                <strong>
+                  <%= item_details[0].country_of_origin %><br>
+                  $<%= item_details[0].cost %><br>
+                </strong>
+                </p>
+		<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Nulla quis sem at nibh elementum imperdiet.</p>
+                <input type="button" class="btn-success" value="Add to Cart" onclick="#">
+                <input type="button" class="btn-warning" value="Back" onclick="goBack()">
+	</div>
+      </div>
+    </div>
+  </body>
+  <% include ../footer.html %>
+</html>
