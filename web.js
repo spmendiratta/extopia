@@ -215,14 +215,23 @@ function getItems(sortBy, request, response) {
 
 // how do you pass json object ?
 app.get('/itemDetails', function(request, response) {
+   /* << Don't need this now - old 
     var item_id = request.query['item_id'].replace(/'/g,"");
     var country_of_origin = request.query['country_of_origin'].replace(/'/g,'');
     var description = request.query['description'].replace(/'/g,'');
     var cost = request.query['cost'].replace(/'/g,'');
     var image_url = request.query['image_url'].replace(/'/g,'');
+
     var details_json = [];
 
     details_json.push({item_id: item_id, country_of_origin: country_of_origin, description: description, cost: cost, image_url: image_url});
+    response.render("item_details", {item_details: details_json});
+    >> */
+    var qjson = request.query['qjson'].replace(/'/g,"");
+
+    var details_json = [];
+    details_json.push(JSON.parse(qjson));
+
     response.render("item_details", {item_details: details_json});
 });
 
