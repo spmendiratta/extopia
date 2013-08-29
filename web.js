@@ -14,23 +14,21 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
 
+// There has to be some other way ..
+var _header = fs.readFileSync('header.html').toString();
+var _footer = fs.readFileSync('footer.html').toString();
+
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
-  // var data = fs.readFileSync('index.html').toString();
-  // response.send(data);
-  var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('home.html').toString();
-  var footer = fs.readFileSync('footer.html').toString();
-  response.send( header + body + footer );
+  response.send( _header + body + _footer );
 });
 
 // contact
 app.get('/contact', function(request, response) {
-  var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('contact.html').toString();
-  var footer = fs.readFileSync('footer.html').toString();
 
-  response.send( header + body + footer);
+  response.send( _header + body + _footer);
 });
 
 // signup : form post
@@ -39,35 +37,29 @@ app.post('/signup', function(request, response) {
   var name = request.param('name');
   var interest = request.param('interest');
 
-  var header = fs.readFileSync('header.html').toString();
   var user_json = {email: email, name: name, interest: interest};
   var status = addUser(user_json, function(code, message) {
-            response.send( header + buildAlert(code, message) );
+            response.send( _header + buildAlert(code, message) );
   });
 });
 
 // specials
 app.get('/specials', function(request, response) {
-  var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('specials.html').toString();
-  var footer = fs.readFileSync('footer.html').toString();
 
-  response.send( header + body + footer);
+  response.send( _header + body + _footer);
 });
 
 // gallery
 app.get('/gallery', function(request, response) {
-  var header = fs.readFileSync('header.html').toString();
   var body = fs.readFileSync('gallery.html').toString();
-  var footer = fs.readFileSync('footer.html').toString();
 
-  response.send( header + body + footer);
+  response.send( _header + body + _footer);
 });
 
 // signin
 app.get('/signin', function(request, response) {
-  var header = fs.readFileSync('header.html').toString();
-  response.send( header + "<html> Not implemented yet ! </html>" );
+  response.send( _header + "<html> Not implemented yet ! </html>" );
 });
 
 // Render example.com/orders

@@ -24,24 +24,49 @@
   <body >
     <div class="container">
       <h2> <font class="orangey"><%= item_details[0].item_id %></font></h2>
-      <div class="thumbnail span5">
+      <div class="thumbnail span4">
           <img src="http://placehold.it/480x480" alt="ALT NAME">
       </div>
       <div class="span4">
         <div class="well">
-		<h2 class="text-warning"><%= item_details[0].description %></h2>
-		<p><span class="label label-success"><%= item_details[0].item_id %></span></p>
-                <p>
-                <strong>
-                  <%= item_details[0].country_of_origin %><br>
-                  $<%= item_details[0].cost %><br>
-                </strong>
+                <div class="simpleCart_shelfItem">
+		  <p><span class="label label-success"><%= item_details[0].item_id %></span></p>
+		  <h2 class="item_name"><%= item_details[0].description %></h2>
+                  <h3> <font class="orangey"> <%= item_details[0].country_of_origin %></font></h3>
+                  <p>
+                    <strong>
+		      <class="item_price">$<%= item_details[0].cost %>
+                      <!-- select class="item_Quantity">
+                              <option value="1"> 1 </option>
+                              <option value="2"> 2 </option>
+                              <option value="3"> 3 </option>
+                              <option value="4"> 4 </option>
+                              <option value="5"> 5 </option>
+                      </select -->
+                      <!--input type="text" value="1" class="item_Quantity"><br -->
+                    </strong>
+                </div>
                 </p>
 		<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Nulla quis sem at nibh elementum imperdiet.</p>
-                <a href="#"><input type="button" class="btn-success" value="Add to Cart"></a>
                 <input type="button" class="btn-warning" value="Back" onclick="goBack()">
+                <!-- a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="simpleCart.add('quantity=1', 'name=productName','price=50');return false;"></a -->
+                <a class="item_add" href=""><input type="button" class="btn-success" value="Add to Cart"></a>
 	</div>
       </div>
+      <div class="span3">
+        <div class="well">
+           <h2 class="item_name">Cart</h2>
+           <br>
+           <strong>
+	     <div class="simpleCart_items" >
+	     </div>
+             <br><br> 
+             <a href="javascript:;" class="simpleCart_empty"><input type="button" class="btn-warning" value="Empty Cart"></a>
+             <a href="javascript:;" class="simpleCart_checkout"><input type="button" class="btn-success" value="Checkout"></a>
+           </strong>
+        </div>
+      </div>
+
     </div>
   </body>
   <% include ../footer.html %>
