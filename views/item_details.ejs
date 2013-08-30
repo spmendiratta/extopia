@@ -21,7 +21,7 @@
   </script>
   <head>
     <meta charset="utf-8">
-    <title>Catalog</title>
+    <title><%= item_details[0].description %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
@@ -59,7 +59,7 @@
 		<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Nulla quis sem at nibh elementum imperdiet.</p>
                 <input type="button" class="btn-warning" value="Back" onclick="goBack()">
                 <!-- a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="simpleCart.add('quantity=1', 'name=productName','price=50');return false;"></a -->
-                <a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="addToCart('<%= item_details[0].description %>', <%= item_details[0].cost %>)"></a>;
+                <a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="addToCart('<%= item_details[0].description %>', <%= item_details[0].cost %>)"></a>
                 <!-- a class="item_add" href="javascript:;"><input type="button" class="btn-success" value="Add to Cart"></a -->
 	</div>
       </div>
@@ -68,7 +68,7 @@
            <h2>Cart</h2>
            <hr>
            <strong>
-	     <div class="simpleCart_items" >
+	     <span><div class="simpleCart_items"></span>
 	     </div>
              <hr>
              Grand Total<div class="simpleCart_grandTotal"></div>

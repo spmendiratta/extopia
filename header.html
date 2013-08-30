@@ -14,7 +14,16 @@
     <!-- simpleCart note rawgithub -->
     <script type="text/javascript" charset="utf-8" src="https://rawgithub.com/wojodesign/simplecart-js/master/simpleCart.min.js"></script>
     <script type="text/javascript">
-                simpleCart({
+                  simpleCart({
+                     checkout: {
+                         type: "PayPal",
+                         email: "sp@extopia.com"
+                  },
+		  cartSytle: "table",  // div : no difference 
+		  language: "english-us",
+                  currency: "USD",
+                  taxRate: 0.080,
+		  cartHeaders: ['Name','Price','Qty','SubTotal'],
                   cartColumns: [
                       { attr: "name", label: "Name" },
                       { attr: "price" , label: "Price", view: 'currency' },
@@ -25,9 +34,6 @@
                       { view: "remove" , text: "Remove", label: false }
                   ]
                 });
-		simpleCart.email = "sp@extopia.com";
-		simpleCart.cartHeaders = ['Name','Price','Options','Quantity_input','Total'];
-		simpleCart.checkoutTo = "PayPal";
     </script>
 
 
@@ -219,7 +225,7 @@
 
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class=""><a href="/">Home</a></li>
+              <!-- li class=""><a href="/">Home</a></li -->
               <li class=""><a href="/items">Catalog</a></li>
               <li class=""><a href="/orders">Orders</a></li>
               <!-- li class=""><a href="/specials">Specials</a></li -->
