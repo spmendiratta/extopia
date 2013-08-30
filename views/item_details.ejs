@@ -8,7 +8,16 @@
   <script>
     function goBack() {
       window.history.back()
-      }
+    }
+  </script>
+  <script>
+    function addToCart(description, price) {
+      simpleCart.add({ 
+          name: description,
+          price: price,
+          quantity: 1
+      });
+    }
   </script>
   <head>
     <meta charset="utf-8">
@@ -49,25 +58,28 @@
                 </p>
 		<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Nulla quis sem at nibh elementum imperdiet.</p>
                 <input type="button" class="btn-warning" value="Back" onclick="goBack()">
-                <!-- a class="item_add" href="javascript:;"><input type="button" class="btn-success" value="Add to Cart" onClick="simpleCart.add('quantity=1', 'name=productName','price=50');return false;"></a -->
-                <a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart"></a>
+                <!-- a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="simpleCart.add('quantity=1', 'name=productName','price=50');return false;"></a -->
+                <a class="item_add" href="#"><input type="button" class="btn-success" value="Add to Cart" onClick="addToCart('<%= item_details[0].description %>', <%= item_details[0].cost %>)"></a>;
+                <!-- a class="item_add" href="javascript:;"><input type="button" class="btn-success" value="Add to Cart"></a -->
 	</div>
       </div>
       <div class="span3">
         <div class="well">
            <h2>Cart</h2>
-           <br>
+           <hr>
            <strong>
 	     <div class="simpleCart_items" >
 	     </div>
+             <hr>
+             Grand Total<div class="simpleCart_grandTotal"></div>
              <br><br> 
              <a href="javascript:;" class="simpleCart_empty"><input type="button" class="btn-warning" value="Empty Cart"></a>
              <a href="javascript:;" class="simpleCart_checkout"><input type="button" class="btn-success" value="Checkout"></a>
            </strong>
+
         </div>
       </div>
-
-    </div>
+    </div> <!-- container -->
   </body>
   <% include ../footer.html %>
 </html>

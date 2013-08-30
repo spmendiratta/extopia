@@ -14,10 +14,22 @@
     <!-- simpleCart note rawgithub -->
     <script type="text/javascript" charset="utf-8" src="https://rawgithub.com/wojodesign/simplecart-js/master/simpleCart.min.js"></script>
     <script type="text/javascript">
+                simpleCart({
+                  cartColumns: [
+                      { attr: "name", label: "Name" },
+                      { attr: "price" , label: "Price", view: 'currency' },
+                      //{ view: "decrement" , label: false, text: "-" },
+                      { attr: "quantity" , label: "Qty" },
+                      //{ view: "increment" , label: false, text: "+" },
+                      { attr: "total" , label: "SubTotal", view: 'currency' },
+                      { view: "remove" , text: "Remove", label: false }
+                  ]
+                });
 		simpleCart.email = "sp@extopia.com";
 		simpleCart.cartHeaders = ['Name','Price','Options','Quantity_input','Total'];
 		simpleCart.checkoutTo = "PayPal";
     </script>
+
 
     <!-- How do you link local stylesheets -->
     <!-- link rel="stylesheet" href="local.css"-->    

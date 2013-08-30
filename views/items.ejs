@@ -41,7 +41,7 @@
                <!-- td><a href="/itemDetails/?query_string&item_id='<%= items[i].item_id %>'&country_of_origin='<%= items[i].country_of_origin %>'&description='<%= items[i].description %>'&cost='<%= items[i].cost %>'&image_url=' <%= [items[i].image_url] %>'"><%= items[i].item_id %></a></td -->
                <!-- passing stringified json object -->
                <!-- td><a href="/itemDetails/?query_string&qjson='<%= JSON.stringify(items[i]) %>'"><%= items[i].item_id %></a></td -->
-               <td><a href="/itemDetails/?query_string&item_id='<%= items[i].item_id %>'"><%= items[i].item_id %></a></td>
+               <td><a href="/itemDetails/?item_id='<%= items[i].item_id %>'"><%= items[i].item_id %></a></td>
                <td><%= items[i].country_of_origin %></td>
                <td><%= items[i].description %></td>
                <td><%= items[i].cost %></td-->
