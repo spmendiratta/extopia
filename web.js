@@ -207,7 +207,7 @@ function getItems(sortBy, request, response) {
 
 // how do you pass json object ?
 app.get('/itemDetails', function(request, response) {
-   /* << Don't need this now - old 
+    /* << Don't need this now - old 
     var item_id = request.query['item_id'].replace(/'/g,"");
     var country_of_origin = request.query['country_of_origin'].replace(/'/g,'');
     var description = request.query['description'].replace(/'/g,'');
@@ -219,12 +219,29 @@ app.get('/itemDetails', function(request, response) {
     details_json.push({item_id: item_id, country_of_origin: country_of_origin, description: description, cost: cost, image_url: image_url});
     response.render("item_details", {item_details: details_json});
     >> */
+
+    /* << Don't need this either - pass whole json 
     var qjson = request.query['qjson'].replace(/'/g,"");
 
     var details_json = [];
     details_json.push(JSON.parse(qjson));
 
     response.render("item_details", {item_details: details_json});
+    */
+
+    // Just query again
+    var item_id = request.query['item_id'].replace(/'/g,"");
+    var Item = global.db.Item;
+    Item.find({where: {item_id: item_id}}).success(function(item_instance) {
+       if (item_instance) {
+           var details_json = [];
+           details_json.push({item_id: item_instance.item_id, country_of_origin: item_instance.country_of_origin, description: item_instance.description, cost: item_instance.cost, image_url: item_instance.image_url});
+           response.render("item_details", {item_details: details_json});
+       }
+    }).error(function(err) {
+        console.log(err);
+        response.send("error getting item details");
+    });
 });
 
 // Show Mailing List
